@@ -14,8 +14,8 @@ public class Book {
 
     @ManyToMany
     @JoinTable(name = "author_book", // join table name
-            joinColumns = @JoinColumn("book_id"), // set up property inside the join table
-            inverseJoinColumns = @JoinColumn("author_id")) // set up property inside the join table
+            joinColumns = @JoinColumn(name = "book_id"), // set up property inside the join table
+            inverseJoinColumns = @JoinColumn(name = "author_id")) // set up property inside the join table
     private Set<Author> authors;
 
     // JPA requires zero-args constructor

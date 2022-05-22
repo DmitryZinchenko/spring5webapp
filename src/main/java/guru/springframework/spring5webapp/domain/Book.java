@@ -1,6 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,16 +17,15 @@ public class Book {
     @JoinTable(name = "author_book", // join table name
             joinColumns = @JoinColumn(name = "book_id"), // set up property inside the join table
             inverseJoinColumns = @JoinColumn(name = "author_id")) // set up property inside the join table
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     // JPA requires zero-args constructor
     public Book() {
     }
 
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public Long getId() {

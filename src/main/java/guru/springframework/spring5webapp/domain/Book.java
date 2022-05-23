@@ -13,6 +13,9 @@ public class Book {
     private String title;
     private String isbn;
 
+    @ManyToOne
+    private Publisher publisher;
+
     @ManyToMany
     @JoinTable(name = "author_book", // join table name
             joinColumns = @JoinColumn(name = "book_id"), // set up property inside the join table
@@ -50,6 +53,14 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public Set<Author> getAuthors() {
